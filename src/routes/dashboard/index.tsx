@@ -1,8 +1,11 @@
+import Dashboard from "./page"
 
-const Dashboard = () => {
+const DashboardLayout = () => {
   return (
-    <div>Dashboardd</div>
+    <div>
+      <Dashboard />
+    </div>
   )
 }
 
-export default Dashboard
+export default DashboardLayout

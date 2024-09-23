@@ -1,6 +1,8 @@
-import { Button, Divider, Form, Input, Radio, Space } from 'antd'
-import styles from './page.module.css'
+import { Button, Divider, Form, FormProps, Input, Radio, Space } from 'antd'
 import { useState } from 'react'
+import { loginReq } from '../../api/auth'
+import { useAuthStore } from '../../store/auth'
+import styles from './page.module.css'
 
 const Signup = () => {
   return(
@@ -53,11 +55,30 @@ const Signup = () => {
   )
 }
 
+type FieldType = {
+  username?: string;
+  password?: string;
+};
+
 const Login = () => {
+  const setRole = useAuthStore((state) => state.setUserType);
+  const setToken = useAuthStore((state) => state.setToken);
+
+  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errors) => {
+    console.log('Error', errors);
+  }
+  
+  const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
+    const resLogin = await loginReq(values.username, values.password);
+    setToken(resLogin?.data.access_token);
+    setRole(resLogin?.data.role.name);
+  };
+
   return (
     <Form
     name="basic"
-    // onFinishFailed={onFinishFailed}
+    onFinish={onFinish}
+    onFinishFailed={onFinishFailed}
     autoComplete="off"
     className={styles.form}
   >
@@ -66,7 +87,7 @@ const Login = () => {
       layout="vertical"
       name="username"
       label="Nombre de usuario"
-      rules={[{ required: true }]}
+      rules={[{ required: true, message: 'Please input your username!' }]}
       labelCol={{ span: 36 }}
       wrapperCol={{ span: 36 }}
     >
@@ -78,7 +99,7 @@ const Login = () => {
       layout="vertical"
       label="Contraseña"
       name="password"
-      rules={[{ required: true }]}
+      rules={[{ required: true, message: 'Please input your password!' }]}
       labelCol={{ span: 36 }}
       wrapperCol={{ span: 36 }}
     >
@@ -86,7 +107,7 @@ const Login = () => {
     </Form.Item>
 
     <Form.Item>
-      <Button className={styles.signupButton}>Iniciar sesion</Button>
+      <Button htmlType='submit' className={styles.signupButton}>Iniciar sesion</Button>
     </Form.Item>
   </Form>
   )
@@ -107,7 +128,7 @@ const SignupPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.siderSignup}>
-        <h1>¡Únete a nuestra comunidad!</h1>
+        <h1 style={{color: 'var(--secondary-sec-color)', textDecoration: 'underline', marginBottom: '.5em'}}>¡Únete a nuestra comunidad!</h1>
         <h3>Regístrate y disfruta de:</h3>
         <ul>
           <li>Ofertas exclusivas: Acceso anticipado a promociones especiales.</li>
@@ -119,7 +140,7 @@ const SignupPage = () => {
       </div>
 
       <div className={styles.formSignup}>
-        <Space align="center" style={{display: 'flex', justifyContent: 'center', margin: '1.5em 0'}}>
+        <Space align="center" style={{display: 'flex', justifyContent: 'center', margin: '3em 0 1.5em'}}>
           <Radio.Group value={isLogin ? 'login' : 'signup'} onChange={handleChangeSection}>
             <Radio.Button
               style={{fontWeight: 700}}
@@ -133,8 +154,8 @@ const SignupPage = () => {
             >Iniciar sesion</Radio.Button>
           </Radio.Group>
         </Space>
-        <div style={{width: '100%', display: 'flex', alignContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
-        <div style={{maxWidth: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', width: '100%'}}>
+        <div className={styles.siderForm}>
+        <div  className={styles.siderContainer}>
         <Divider>{isLogin ? 'Iniciar sesion' : 'Registro'}</Divider>
         {
           isLogin ?

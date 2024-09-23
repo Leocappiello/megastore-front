@@ -6,9 +6,9 @@
 
 .siderSignup {
     width: 35%;
-    background: #ee9ca7;
-    background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7);
-    background: linear-gradient(to right, #ffdde1, #ee9ca7);
+    background-color: var(--ternary-color);
+    opacity: 85%;
+
     border-radius: 15px 0 0 15px;
     text-align: start;
     line-height: 2em;
@@ -29,14 +29,17 @@
 .signupButton {
     width: 100%;
     padding: 1.25em;
-    background-color: #383838;
+    letter-spacing: 1px;
     color: white;
+    background-color: #282828;
 }
 
 .signupButton:hover {
-    background-color: #282828 !important;
+    /* background-color: #282828 !important; */
+    background-color: var(--secondary-color) !important;
+    opacity: .8;
     border: 1px solid transparent !important;
-    color: #ee9ca7 !important;
+    color: var(--primary-sec-color) !important;
 }
 
 .form {
@@ -46,12 +49,31 @@
     height: 50%;
 }
 
+.siderForm {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 50%;
+    justify-content: center;
+}
+
+.siderContainer {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
 .isSelected {
     background-color: #383838 !important;
-    color: #ee9ca7 !important;
+    color: var(--ternary-color) !important;
     border: none;
 }
 
 .button:hover, .isSelected:hover {
-    color: #ee9ca7 !important;
+    color: var(--secondary-color) !important;
 }

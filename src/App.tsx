@@ -1,22 +1,40 @@
 import { Route, Routes } from "react-router-dom";
 import './App.css';
-import Dashboard from './routes/dashboard';
+import AdminRoute from "./routes/adminRoute";
+import DashboardLayout from "./routes/dashboard";
+import ProfileLayout from "./routes/profile";
 import SignupLayout from "./routes/signup";
+import UserRoute from "./routes/userRoute";
+import MainLayout from "./routes/main/layout";
 
 function App() {
   return (
    <>
-      <div className="App" style={{width: '100%', height: '100%'}}>
+      <div className="App">
         <Routes>
-          <Route path="/" element={<div>/</div>} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/signup" element={<SignupLayout />} />
+          <Route path="/" element={<MainLayout />} />
+
+          <Route path="/dashboard" element={
+            <AdminRoute>
+              <DashboardLayout />
+            </AdminRoute>
+          } />
+
+          <Route path="/profile" element={
+            <UserRoute>
+              <ProfileLayout />
+            </UserRoute>
+          } />
+
+          <Route path="/login" element={
+              <SignupLayout />
+          } />
+
           <Route path='*' element={<div>404</div>} />
         </Routes>
       </div>
     </>
  );
-  
 }
 
 export default App
