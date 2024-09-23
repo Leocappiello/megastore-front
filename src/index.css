@@ -1,3 +1,18 @@
+:root {
+  /* --primary-color: #0ca3ca; */
+  /* --secondary-color: #5bb636; */
+  /* --ternary-color: #007bff; */
+
+  /* --primary-sec-color: #0ca4cab6; */
+  /* --secondary-sec-color: #5ab63677; */
+
+  --primary-color: #0CA3CA;
+  --secondary-color: #364BB5;
+  --ternary-color: #856FFC;
+
+  --primary-sec-color: #6FB4FC;
+  --secondary-sec-color: #6FFCEB;
+}
 
 * {
   box-sizing: border-box;
@@ -7,8 +22,10 @@ html {
   height: 100vh;
 }
 
+h1, h2, h3, h4, h5 { margin: 0 }
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   margin: 0;
   height: 100%;
   display: flex;
@@ -16,10 +33,9 @@ body {
   align-items: center;
   justify-content: center;
 
-  background: #B993D6;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #8CA6DB, #B993D6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: #007bff;
+  background: linear-gradient(to right, var(--ternary-color), var(--secondary-color));
+  background: linear-gradient(to right, var(--ternary-color), var(--secondary-color));
   font-family: "Roboto", sans-serif;
 }
 
