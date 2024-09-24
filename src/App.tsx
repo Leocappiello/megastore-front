@@ -6,6 +6,8 @@ import ProfileLayout from "./routes/profile";
 import SignupLayout from "./routes/signup";
 import UserRoute from "./routes/userRoute";
 import MainLayout from "./routes/main/layout";
+import LayoutLanding from "./routes/landing/layout";
+import LandingLayout from "./routes/landing/layout";
 
 function App() {
   return (
@@ -13,6 +15,11 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<MainLayout />} />
+
+          <Route 
+            path="/landing"
+            element={<LandingLayout />}
+          />
 
           <Route path="/dashboard" element={
             <AdminRoute>
