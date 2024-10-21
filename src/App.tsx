@@ -9,6 +9,7 @@ import MainLayout from "./routes/main/layout";
 import LayoutLanding from "./routes/landing/layout";
 import LandingLayout from "./routes/landing/layout";
 import ProductLayout from "./routes/product";
+import CheckoutLayout from './routes/checkout/layout';
 
 function App() {
   return (
@@ -27,6 +28,12 @@ function App() {
             //   <DashboardLayout />
             // </AdminRoute>
             <DashboardLayout />
+          } />
+
+          <Route path="/checkout" element={
+            <UserRoute>
+              <CheckoutLayout />
+            </UserRoute>
           } />
 
           <Route path="/profile" element={
