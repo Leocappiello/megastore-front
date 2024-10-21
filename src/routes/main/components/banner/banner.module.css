@@ -7,6 +7,118 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-bottom: 1.5rem;
     display: flex;
+    margin-top: 2rem;
+}
+
+.headerLeft {
+    width: 50%;
+    display: flex;
+}
+
+.headerRight {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.addProduct:hover {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    /* border: 3px solid var(--secondary-color) !important; */
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.login:hover {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.loginIcon {
+    margin: 0 .25rem;
+    display: flex;
+}
+
+.logged {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    align-items: center;
+    padding: .5rem .8rem .5rem 0;
+    border-radius: 5px;
+    color: var(--ternary-color);
+}
+
+.logged:hover {
+    color: var(--primary-color);
+    background-color: #e3e3e3;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    color: var(--primary-color);
+}
+
+.logged p {
+    margin: 0;
+}
+
+.loggedIcon {
+    margin: 0 .5rem;
+    font-size: 1.25rem;
+}
+
+.divider {
+    font-size: 25px;
+    /* background-color: rgb(136, 135, 135); */
+    background-color: #282828;
+    margin: 0 .25rem 0 0;
+}
+
+.cart {
+    display: flex;
+    color: gray;
+    padding: .75rem;
+    border-radius: 50%;
+    color: var(--ternary-color);
+}
+
+.cart:hover {
+    background-color: rgb(233, 230, 230);
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/*  */
+
+.cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px; /* Ajusta según lo necesites */
+    height: 55px; /* Asegúrate que sea igual a width para que sea redondo */
+    border-radius: 50%;
+    color: var(--ternary-color);
+    /* transition: background-color 0.3s, box-shadow 0.3s; */
+    
+    font-size: 2rem !important;
+}
+
+.cart p {
+    margin: 0; /* Elimina el margen por defecto */
+    font-size: 0.9rem; /* Ajusta el tamaño del texto según lo necesites */
+    text-align: center;
+}
+
+.cart:hover {
+    background-color: rgb(233, 230, 230);
+    color: var(--primary-color);
+    cursor: pointer;
 }
 
 .title {

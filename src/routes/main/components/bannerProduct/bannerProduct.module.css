@@ -1,0 +1,44 @@
+.card {
+    margin-bottom: 1rem;
+    display: flex;
+    width: 100%;
+}
+
+.firstHalf {
+    width: 50%;
+    height: 100%;
+    background-color: #ceccfb;
+    padding: 1rem 2rem;
+    border-radius: 15px 0 0 15px;
+}
+
+.secondHalf {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    background-image: url('public/banner.jpg');
+    background-position: 0 -50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0 15px 15px 0;
+}
+
+.title {
+    color: #282828;
+}
+
+.subtitle {
+    color: #282828;
+    margin: 0 0 1rem;
+}
+
+.button {
+    background-color: var(--ternary-color);
+    color: white;
+}
+
+.button:hover {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
