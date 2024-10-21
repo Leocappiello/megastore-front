@@ -134,7 +134,7 @@ const BackButton = () => {
 
 const Product = () => {
   const quantity = 4;
-  const urlImage = "https://assets.adidas.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/e2bff7577b34435e974ee7d13c6dd565_9366/adidas_TAEKWONDO_W_Blanco_JQ4774_01_standard.jpg";
+  const urlImage = "https://assets.adidsas.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/e2bff7577b34435e974ee7d13c6dd565_9366/adidas_TAEKWONDO_W_Blanco_JQ4774_01_standard.jpg";
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
