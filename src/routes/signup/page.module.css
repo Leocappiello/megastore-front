@@ -20,6 +20,10 @@
     background-color: white;
     border-radius: 0 15px 15px 0;
     padding: 0 2em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 
 .formItem {
@@ -55,8 +59,8 @@
     align-content: center;
     flex-direction: column;
     align-items: center;
-    height: 50%;
-    justify-content: center;
+    height: 100%;
+    justify-content: start;
 }
 
 .siderContainer {
@@ -76,4 +80,8 @@
 
 .button:hover, .isSelected:hover {
     color: var(--secondary-color) !important;
+}
+
+.error {
+    color: red;
 }

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { isAxiosError } from 'axios';
 
 export const loginReq = async (email: string | undefined, password: string | undefined) => {
     try {
@@ -7,6 +7,11 @@ export const loginReq = async (email: string | undefined, password: string | und
             password
         });
     } catch (error) {
-        console.log(error);
+        console.log(error, isAxiosError(error));
+        if (axios.isAxiosError(error)) {
+            return { error: error.response?.data || 'Error desconocido' };
+        } else {
+            return { error: 'Error inesperado' };
+        }
     }
 }

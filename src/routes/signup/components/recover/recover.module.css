@@ -1,0 +1,7 @@
+.recover {
+    color: var(--primary-color);
+}
+
+.recover:hover {
+    color: var(--primary-sec-color);
+}

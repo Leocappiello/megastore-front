@@ -1,0 +1,22 @@
+
+.signupButton {
+    width: 100%;
+    padding: 1.25em;
+    letter-spacing: 1px;
+    color: white;
+    background-color: var(--secondary-color);
+    border: none;
+    font-weight: 600;
+}
+
+.signupButton:hover {
+    /* background-color: #282828 !important; */
+    background-color: var(--primary-sec-color) !important;
+    /* opacity: .8; */
+    /* border: 1px solid transparent !important; */
+    color: var(--secondary-color) !important;
+}
+
+/* .input {
+    background-color: #383838 !important;
+} */
