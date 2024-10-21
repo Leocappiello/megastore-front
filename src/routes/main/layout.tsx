@@ -2,7 +2,7 @@ import Main from './page'
 
 const MainLayout = () => {
   return (
-    <div>
+    <div style={{height: '100%'}}>
         <Main />
     </div>
   )
