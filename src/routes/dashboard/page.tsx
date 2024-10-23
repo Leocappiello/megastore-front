@@ -42,12 +42,18 @@ const items: MenuItem[] = [
 const Dashboard = () => {
   return (
     <div className={styles.container}>
-      <Layout style={{ height: '100%', borderRadius: '15px 0 0 15px' }}>
+      <Layout className={styles.layoutAnt} style={{ height: '100%', borderRadius: '15px 0 0 15px' }}>
         <Sider
           className={styles.sider}
           style={{height: '100%', borderRadius: '15px 0 0 15px'}}
-           /* collapsed={collapsed} */ /* onCollapse={(value) => setCollapsed(value)} */>
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} className={styles.siderMenu}/>
+        >
+          <Menu
+            theme="dark"
+            defaultSelectedKeys={['1']}
+            mode="inline"
+            items={items}
+            className={styles.siderMenu}
+          />
         </Sider>
       </Layout>
     </div>

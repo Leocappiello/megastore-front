@@ -18,16 +18,15 @@ function App() {
         <Routes>
           <Route path="/" element={<MainLayout />} />
 
-          <Route 
+          <Route
             path="/landing"
             element={<LandingLayout />}
           />
 
-          <Route path="/dashboard" element={
-            // <AdminRoute>
-            //   <DashboardLayout />
-            // </AdminRoute>
-            <DashboardLayout />
+          <Route path="/admin" element={
+            <AdminRoute>
+              <DashboardLayout />
+            </AdminRoute>
           } />
 
           <Route path="/checkout" element={

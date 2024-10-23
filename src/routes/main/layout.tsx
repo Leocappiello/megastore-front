@@ -1,9 +1,9 @@
-import Main from './page'
+import Main from './page';
 
 const MainLayout = () => {
   return (
     <div style={{height: '100%'}}>
-        <Main />
+        <Main/>
     </div>
   )
 }

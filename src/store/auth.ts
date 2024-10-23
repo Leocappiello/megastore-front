@@ -1,7 +1,6 @@
+import { getCookie, removeCookie, setCookie } from 'typescript-cookie';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import cookiesStorage from './cookies';
-import { getCookie, setCookie, removeCookie } from 'typescript-cookie';
 
 type UserType = 'USER' | 'ADMIN' | null;
 
@@ -11,7 +10,8 @@ type State = {
 }
 
 type Actions = {
-    setToken: (token: string) => void
+    logout: () => void;
+    setToken: (token: string) => void;
     setUserType: (userType: UserType) => void;
 }
 
@@ -30,20 +30,39 @@ const cookiesStorage = {
 
 
 // export const useAuthStore = create(persist<State & Actions>(
-export const useAuthStore = create<State & Actions>((set) => ({
+// export const useAuthStore = create<State & Actions>((set) => ({
+//         token: '',
+//         userType: null,
+//         setToken: (token) => {
+//             setCookie('token', token, { expires: 1, secure: true, sameSite: 'Strict' });
+//         },
+//         setUserType: (userType: UserType) => set({userType}),
+//         logout: () => {
+//             removeCookie('token');
+//         }
+//     }))
+export const useAuthStore = create<State & Actions>(
+    persist(
+      (set) => ({
         token: '',
         userType: null,
-        // setToken: (token: string) => set((state) => ({
-        //     token
-        // })),
-        setToken: (token) => {
-            // set({ token });
-            setCookie('token', token, { expires: 1, secure: true, sameSite: 'Strict' });
+        setToken: (token: string) => {
+          set({ token });
+          setCookie('token', token, { expires: 1, secure: true, sameSite: 'Strict' });
         },
-        setUserType: (userType: UserType) => set({userType}),
+        setUserType: (userType: UserType) => set({ userType }),
         logout: () => {
-            removeCookie('token');
-            // localStorage.removeItem('token');
-            // set({token: ''})
-        }
-}))
+          removeCookie('token');
+          set({ token: null, userType: null });
+        },
+      }),
+      {
+        name: 'auth', // Nombre del almacenamiento
+        getStorage: () => ({
+          getItem: (key: string) => getCookie(key) ?? null,
+          setItem: (key: string, value: string) => setCookie(key, value, { expires: 1 }),
+          removeItem: (key: string) => removeCookie(key),
+        }),
+      }
+    )
+  );

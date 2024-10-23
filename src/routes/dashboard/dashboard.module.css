@@ -1,9 +1,13 @@
 .layout {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.layoutAnt {
+    
 }
 
 .container {
@@ -17,9 +21,13 @@
 
 .sider {
     height: 100%;
+    background-color: aqua !important;
 }
 
 .siderMenu {
     border-radius: 15px 0 0 15px;
     height: 100%;
+    background-color: var(--secondary-color);
+    /* background-color: var(--primary-sec-color); */
+    /* background-color: var(--secondary-sec-color); */
 }

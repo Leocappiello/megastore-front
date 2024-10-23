@@ -1,5 +1,5 @@
-import { Col, Row, Skeleton, Space } from "antd";
-import { useState } from "react";
+import { Row } from "antd";
+import { useState, useEffect } from "react";
 import Typewriter from "../../components/typewriter";
 import Banner from "./components/banner";
 import styles from './main.module.css';
@@ -25,35 +25,35 @@ const products = [
     { id: "15", name: 'Producto 8', price: 80.00, image: 'https://via.placeholder.com/150' },
   ];
 
-const Main = () => {
-    const [loading, setLoading] = useState(true);
+const Main = (/* {isLogged}: {isLogged: boolean} */) => {
+    const [loading, setLoading] = useState(false);
 
-  return (
-    <>
-        <Banner />
-        <BannerProduct />
-        <div className={styles.container}>
-            <div className={styles.products}>
-                <h1 className={styles.title}>
-                    <Typewriter
-                        delay={25}
-                        text={`Conoce algunos de nuestros productos`}
-                    />
-                </h1>
-                <Row gutter={16} justify='center' align='middle'>
-                    {products.map(product => (
-                        <CardProduct
-                            key={product.id}
-                            loading={loading} 
-                            product={product}
-                            setLoading={setLoading}
+    return (
+        <div className={styles.parent}>
+            <Banner /* isLogged={isLogged} */ />
+            <BannerProduct />
+            <div className={styles.container}>
+                <div className={styles.products}>
+                    <h1 className={styles.title}>
+                        <Typewriter
+                            delay={25}
+                            text={`Conoce algunos de nuestros productos`}
                         />
-                    ))}
-                </Row>
+                    </h1>
+                    <Row gutter={16} justify='center' align='middle'>
+                        {products.map(product => (
+                            <CardProduct
+                                key={product.id}
+                                loading={loading}
+                                product={product}
+                                setLoading={setLoading}
+                            />
+                        ))}
+                    </Row>
+                </div>
             </div>
         </div>
-    </>
-  )
+    )
 }
 
 export default Main
