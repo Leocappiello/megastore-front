@@ -44,7 +44,7 @@ const cookiesStorage = {
 export const useAuthStore = create<State & Actions>(
     persist(
       (set) => ({
-        token: '',
+        token: null,
         userType: null,
         setToken: (token: string) => {
           set({ token });

@@ -10,6 +10,9 @@ import { FaRegBell } from "react-icons/fa6";
 import { FaChartLine } from "react-icons/fa6";
 import { Menu, MenuProps, Layout } from "antd";
 import { TbUserQuestion } from "react-icons/tb";
+import { useState } from "react";
+import Default from "./sections/default";
+import DashboardUsers from "./sections/users";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -28,7 +31,7 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem('Usuarios', '1', <FaUserAlt />),
+  getItem('Usuarios', 'users', <FaUserAlt />),
   getItem('Productos', '2', <AiOutlineShop />),
   getItem('Acciones', '3', <FaGear />),
   getItem('Pedidos', '4', <IoTicketSharp />),
@@ -39,7 +42,28 @@ const items: MenuItem[] = [
   getItem('Consultas', '9', <TbUserQuestion />),
 ];
 
+interface Event {
+  key: string
+}
+
 const Dashboard = () => {
+  const [section, setSection] = useState(null);
+
+  const handleChangeSection = (e: Event) => {
+    setSection(e.key)
+  };
+
+  const getSectionActive = () => {
+    switch (section) {
+      case 'users':
+        return (<DashboardUsers/>)
+      case null:
+      return <Default />;
+      default:
+        return <div>Seccion no valida</div>;
+    }
+  }
+
   return (
     <div className={styles.container}>
       <Layout className={styles.layoutAnt} style={{ height: '100%', borderRadius: '15px 0 0 15px' }}>
@@ -48,13 +72,15 @@ const Dashboard = () => {
           style={{height: '100%', borderRadius: '15px 0 0 15px'}}
         >
           <Menu
+            onClick={handleChangeSection}
             theme="dark"
-            defaultSelectedKeys={['1']}
             mode="inline"
             items={items}
             className={styles.siderMenu}
           />
         </Sider>
+        
+        {getSectionActive()}
       </Layout>
     </div>
   )
