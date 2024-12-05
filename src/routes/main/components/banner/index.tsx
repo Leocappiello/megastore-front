@@ -1,10 +1,10 @@
 import { Button, Divider } from 'antd'
 import { FaShoppingCart, FaUserCircle, FaUserSecret } from 'react-icons/fa'
+import { HiOutlineLogin } from 'react-icons/hi'
 import { MdOutlineLogout } from 'react-icons/md'
 import { Link } from 'react-router-dom'
-import styles from './banner.module.css'
-import { HiOutlineLogin } from 'react-icons/hi'
 import { useAuthStore } from '../../../../store/auth'
+import styles from './banner.module.css'
 
 const Banner = ({itemCount = 19}: {isLogged: boolean, itemCount?: number}) => {
   const displayCount = itemCount > 20 ? '+20' : itemCount;
@@ -36,7 +36,14 @@ const Banner = ({itemCount = 19}: {isLogged: boolean, itemCount?: number}) => {
           {
               isAdmin ?
               <>
-                <Link to={'/admin'} className={styles.logged}>
+                <Link
+                  to={'/admin'}
+                  className={styles.logged}
+                  id='adminPanel'
+                  role="tab"
+                  aria-controls="adminPanel"
+                  aria-selected="true"
+                >
                   <FaUserSecret className={styles.loggedIcon} />
                   <p>Admin Panel</p>
                 </Link>

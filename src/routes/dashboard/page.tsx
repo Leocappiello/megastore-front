@@ -13,6 +13,7 @@ import { TbUserQuestion } from "react-icons/tb";
 import { useState } from "react";
 import Default from "./sections/default";
 import DashboardUsers from "./sections/users";
+import DashboardProducts from "./sections/products";
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -32,7 +33,7 @@ function getItem(
 
 const items: MenuItem[] = [
   getItem('Usuarios', 'users', <FaUserAlt />),
-  getItem('Productos', '2', <AiOutlineShop />),
+  getItem('Productos', 'products', <AiOutlineShop />),
   getItem('Acciones', '3', <FaGear />),
   getItem('Pedidos', '4', <IoTicketSharp />),
   getItem('Promociones', '5', <BsFillMegaphoneFill />),
@@ -57,6 +58,8 @@ const Dashboard = () => {
     switch (section) {
       case 'users':
         return (<DashboardUsers/>)
+      case 'products':
+        return (<DashboardProducts/>)
       case null:
       return <Default />;
       default:
