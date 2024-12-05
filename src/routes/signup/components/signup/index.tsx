@@ -1,9 +1,9 @@
-import React from 'react'
-import styles from './signup.module.css'
 import { Button, Form, Input } from 'antd';
+import styles from './signup.module.css';
 
 const SignupForm = ({ onSignup }) => {
     const onFinish = (values) => {
+      console.log('aaa');
       onSignup(values); // Pasar valores al callback de Signup
     };
   
@@ -30,7 +30,7 @@ const SignupForm = ({ onSignup }) => {
           }]}
           className={styles.formItem}
         >
-          <Input className={styles.input} placeholder='Username' />
+          <Input className={styles.input} placeholder='Username' data-testid="username-register"/>
         </Form.Item>
         <Form.Item
           name="email"
@@ -43,7 +43,7 @@ const SignupForm = ({ onSignup }) => {
           }]}
           className={styles.formItem}
         >
-          <Input className={styles.input} placeholder='Email' />
+          <Input className={styles.input} placeholder='Email' data-testid="email-register"/>
         </Form.Item>
   
         <Form.Item
@@ -56,7 +56,7 @@ const SignupForm = ({ onSignup }) => {
           }]}
           className={styles.formItem}
         >
-          <Input.Password className={styles.input} placeholder='Contraseña' />
+          <Input.Password className={styles.input} placeholder='Contraseña' data-testid="password-register"/>
         </Form.Item>
   
         <Form.Item
@@ -80,11 +80,11 @@ const SignupForm = ({ onSignup }) => {
           ]}
           className={styles.formItem}
         >
-          <Input.Password className={styles.input} placeholder='Repetir contraseña' />
+          <Input.Password className={styles.input} placeholder='Repetir contraseña' data-testid="repeat-register"/>
         </Form.Item>
   
         <Form.Item>
-          <Button type="primary" htmlType="submit" className={styles.signupButton}>
+          <Button type="primary" htmlType="submit" className={styles.signupButton} data-testid="button-register">
             Registrarse
           </Button>
         </Form.Item>

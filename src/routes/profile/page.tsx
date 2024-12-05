@@ -1,6 +1,7 @@
 import { Avatar, Button, DatePicker, Divider, Form, Input } from 'antd';
 import { FaRegUser } from "react-icons/fa";
 import styles from './profile.module.css';
+import BackButton from '../../components/backButton';
 
 const formItemLayout = {
     labelCol: {
@@ -16,6 +17,7 @@ const formItemLayout = {
 const Profile = () => {
     return(
         <div className={styles.container}>
+            <BackButton />
             <h3 className={styles.header}>Edit profile</h3>
             <div className={styles.avatarContainer}>
                 <Avatar

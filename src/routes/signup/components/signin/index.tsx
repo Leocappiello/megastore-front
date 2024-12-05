@@ -1,5 +1,5 @@
 import { Button, Form, Input, Spin } from 'antd';
-import styles from './signin.module.css'
+import styles from './signin.module.css';
 
 const SigninForm = ({ onLogin, loading }) => {
   const onFinish = (values) => {
@@ -18,6 +18,7 @@ const SigninForm = ({ onLogin, loading }) => {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         className={styles.form}
+        data-testid="login-form"
       >
         <Form.Item
           name="username"
@@ -25,7 +26,10 @@ const SigninForm = ({ onLogin, loading }) => {
           rules={[{ required: true, message: 'Por favor, ingresa tu nombre de usuario' }]}
           className={styles.formItem}
         >
-          <Input className={styles.input} />
+          <Input
+            className={styles.input}
+            data-testid="username-input"
+          />
         </Form.Item>
 
         <Form.Item
@@ -34,11 +38,19 @@ const SigninForm = ({ onLogin, loading }) => {
           rules={[{ required: true, message: 'Por favor, ingresa tu contraseña' }]}
           className={styles.formItem}
         >
-          <Input.Password className={styles.input} />
+          <Input.Password
+            className={styles.input}
+            data-testid="password-input"
+          />
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" className={styles.signupButton}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className={styles.signupButton}
+            data-testid="login-button"
+          >
             Iniciar sesión
           </Button>
         </Form.Item>

@@ -1,7 +1,6 @@
-import React from 'react'
 import { Col, Skeleton } from 'antd'
-import styles from './cardProduct.module.css'
 import { Link } from 'react-router-dom'
+import styles from './cardProduct.module.css'
 
 interface IProduct {
     id: string
@@ -17,7 +16,7 @@ const CardProduct = ({loading, product, setLoading}: {loading: boolean, product:
             <div className={styles.productCard}>
                 { loading && <Skeleton active />}
                 <img
-                    src={product.image}
+                    src={product.imagesUrls[0].imageUrl}
                     alt={product.name}
                     className={styles.productImage}
                     onLoad={() => setLoading(false)}

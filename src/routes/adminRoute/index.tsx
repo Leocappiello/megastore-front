@@ -3,6 +3,7 @@ import { useAuthStore } from '../../store/auth';
 
 const AdminRoute = ({ children }) => {
   const { token, userType } = useAuthStore();
+  console.log(token, userType);
 
   if (!token) {
     return <Navigate to={'/login'} />;

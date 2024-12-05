@@ -1,12 +1,20 @@
 import { Button, Divider } from 'antd'
-import styles from './banner.module.css'
+import { FaShoppingCart, FaUserCircle, FaUserSecret } from 'react-icons/fa'
 import { HiOutlineLogin } from 'react-icons/hi'
-import { Link } from 'react-router-dom'
-import { FaShoppingCart, FaUserCircle } from 'react-icons/fa'
 import { MdOutlineLogout } from 'react-icons/md'
+import { Link } from 'react-router-dom'
+import { useAuthStore } from '../../../../store/auth'
+import styles from './banner.module.css'
 
-const Banner = ({itemCount = 19}) => {
+const Banner = ({itemCount = 19}: {isLogged: boolean, itemCount?: number}) => {
   const displayCount = itemCount > 20 ? '+20' : itemCount;
+  const logout = useAuthStore((state) => state.logout);
+  const token = useAuthStore((state) => state.token);
+  const isLogged = token !== null ? true : false;
+
+  const isAdmin = true;
+
+  const handleLogout = () => logout();
 
   return (
     <div className={styles.header}>
@@ -22,31 +30,55 @@ const Banner = ({itemCount = 19}) => {
       </div>
 
       <div className={styles.headerRight}>
-        {/* <Button className={styles.addProduct}>Añadir producto</Button> */}
-        <span className={styles.cart}>
-            <p>{displayCount}</p>
-            <FaShoppingCart className={styles.cartIcon} />
-        </span>
-        <Divider type='vertical' className={styles.divider} />
-        <Link to={'/profile'} className={styles.logged}>
-          <FaUserCircle className={styles.loggedIcon} />
-          <p>Mi perfil</p>
-        </Link>
-        
-        <Divider type='vertical' className={styles.divider} />
-        <Link to={'/login'} className={styles.logged}>
-          <MdOutlineLogout className={styles.loggedIcon} />
-          <p>Cerrar sesion</p>
-        </Link>
-      </div>
+        {
+          isLogged ?
+          <>
+          {
+              isAdmin ?
+              <>
+                <Link
+                  to={'/admin'}
+                  className={styles.logged}
+                  id='adminPanel'
+                  role="tab"
+                  aria-controls="adminPanel"
+                  aria-selected="true"
+                >
+                  <FaUserSecret className={styles.loggedIcon} />
+                  <p>Admin Panel</p>
+                </Link>
+                <Divider type='vertical' className={styles.divider} />
+              </>
+              :
+              <>
+                <Link to={'/checkout'} className={styles.cart}>
+                  <p>{displayCount}</p>
+                  <FaShoppingCart className={styles.cartIcon} />
+                </Link>
+                
+                <Divider type='vertical' className={styles.divider} />
 
-        {/* En caso de no estar logeado */}
-      {/* <div className={styles.headerRight}>
-        <Link to={'/login'} className={styles.login}>
-          <p className={styles.loginIcon}><HiOutlineLogin /></p>
-          <p>Iniciar sesion</p>
-        </Link>
-      </div> */}
+                <Link to={'/profile'} className={styles.logged}>
+                  <FaUserCircle className={styles.loggedIcon} />
+                  <p>Mi perfil</p>
+                </Link>
+                <Divider type='vertical' className={styles.divider} />
+            </>
+          }
+            <Button onClick={handleLogout} className={styles.logged}>
+              <MdOutlineLogout className={styles.loggedIcon} />
+              <p>Cerrar sesion</p>
+            </Button>
+          </>
+          :
+          <div className={styles.headerRight}>
+            <Link to={'/login'} className={styles.login}>
+              <p className={styles.loginIcon}><HiOutlineLogin /></p>
+              <p>Iniciar sesion</p>
+            </Link>
+          </div>
+        }
+      </div>
     </div>
   )
 }
